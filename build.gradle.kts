@@ -61,6 +61,8 @@ dependencies {
 
 
 fun DependencyHandlerScope.springboot() {
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-hibernate5")
+
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-freemarker")
     implementation("org.springframework.boot:spring-boot-starter-web") {
