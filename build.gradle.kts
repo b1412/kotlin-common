@@ -8,9 +8,7 @@ plugins {
     id("org.springframework.boot") version "2.2.0.RC1"
     id("io.spring.dependency-management") version "1.0.8.RELEASE"
     kotlin("jvm") version kotlinVersion
-    kotlin("plugin.jpa") version kotlinVersion
-    kotlin("plugin.spring") version kotlinVersion
-    kotlin("plugin.allopen") version kotlinVersion
+
 }
 
 val jar: Jar by tasks
@@ -19,14 +17,6 @@ val bootJar: BootJar by tasks
 bootJar.enabled = false
 jar.enabled = true
 
-allOpen {
-    annotation("javax.persistence.Entity")
-    annotation("javax.persistence.Embeddable")
-    annotation("javax.persistence.MappedSuperclass")
-}
-
-group = "cannon"
-version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 val developmentOnly by configurations.creating
@@ -37,11 +27,13 @@ configurations {
 }
 
 repositories {
+    mavenLocal()
     mavenCentral()
     maven(url = "https://repo.spring.io/milestone")
     maven(url = "https://dl.bintray.com/arrow-kt/arrow-kt/")
     maven(url = "https://oss.jfrog.org/artifactory/oss-snapshot-local/")
 }
+
 
 dependencies {
     val arrowVersion = "0.10.3"
