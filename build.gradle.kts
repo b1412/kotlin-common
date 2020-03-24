@@ -8,9 +8,15 @@ plugins {
     id("org.springframework.boot") version "2.2.0.RC1"
     id("io.spring.dependency-management") version "1.0.8.RELEASE"
     kotlin("jvm") version kotlinVersion
-
+    kotlin("plugin.allopen") version kotlinVersion
+    kotlin("plugin.noarg") version kotlinVersion
 }
 
+allOpen {
+    annotation("javax.persistence.Entity")
+    annotation("javax.persistence.Embeddable")
+    annotation("javax.persistence.MappedSuperclass")
+}
 val jar: Jar by tasks
 val bootJar: BootJar by tasks
 
