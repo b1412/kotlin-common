@@ -3,7 +3,6 @@ import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 plugins {
     val kotlinVersion = "1.3.50"
-    jacoco
     maven
     id("org.springframework.boot") version "2.2.0.RC1"
     id("io.spring.dependency-management") version "1.0.8.RELEASE"
@@ -14,9 +13,11 @@ plugins {
 
 allOpen {
     annotation("javax.persistence.Entity")
-    annotation("javax.persistence.Embeddable")
-    annotation("javax.persistence.MappedSuperclass")
 }
+noArg{
+    annotation("javax.persistence.Entity")
+}
+
 val jar: Jar by tasks
 val bootJar: BootJar by tasks
 
